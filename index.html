@@ -1,23 +1,624 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+
+   <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "BMW X7 장기렌트란 무엇이며, 어떤 장점이 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "BMW X7 장기렌트는 일정 기간(보통 24개월~60개월) 동안 월별 렌탈료를 지불하고 X7 차량을 이용하는 서비스입니다. 차량 구매 방식과 달리 초기 비용 부담이 적고(보증금/선납금 선택 가능), 취등록세, 자동차세, 보험료 등이 월 렌탈료에 포함되어 있어 차량 유지 관리가 편리합니다. 특히 법인이나 개인사업자는 비용 처리로 세금 절감 효과를 볼 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "X7 장기렌트와 리스의 주요 차이점은 무엇인가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "장기렌트는 렌트사 명의로 차량을 등록하여 '하' 번호판을 사용합니다. 보험 가입 주체가 렌트사이므로 운전 경력 단절이 없고 보험료 할증도 없습니다. 반면 리스는 고객 명의로 차량을 등록하고 '호' 또는 '하' 번호판을 사용하며, 고객이 직접 보험을 가입해야 합니다. 렌트료의 비용 처리 방식, 계약 만기 시점의 차량 인수 방식 등에서도 차이가 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "X7 장기렌트 월 렌탈료는 어떻게 결정되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "월 렌탈료는 차량 가격, 렌탈 기간, 보증금/선납금 유무, 잔존 가치(만기 시 차량 가치)에 따라 산정됩니다. 일반적으로 렌탈 기간이 길수록, 보증금이나 선납금을 많이 낼수록 월 렌탈료는 낮아집니다. 또한, 업체별 프로모션이나 제휴 할인, 연간 주행거리 약정 등에 따라서도 비용이 달라질 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "장기렌트 계약 만기 시 X7 차량을 인수할 수 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네, 계약 만기 시 차량 인수와 반납 중 선택이 가능합니다. 인수를 원할 경우, 계약 시 책정된 잔존 가치를 렌트사에 지불하고 차량을 소유할 수 있습니다. 반납을 선택하면 차량을 반납하고 계약이 종료되며, 위약금 없이 신차로 재계약을 진행할 수도 있습니다. 계약 조건에 따라 인수 옵션이 달라지므로 계약 전 확인이 필수입니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "BMW X7 장기렌트 견적 비교는 어떻게 해야 저렴하게 이용할 수 있나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "가장 저렴한 견적을 받으려면 여러 장기렌트 업체(렌트사, 캐피탈사, 에이전시 등)의 견적을 비교하는 것이 필수입니다. 업체마다 주력 차종이나 프로모션 조건이 다르기 때문입니다. 온라인 견적 비교 플랫폼을 이용하면 여러 업체의 견적을 한 번에 받고 '특가' 상품이나 '재고 할인' 등을 빠르게 파악하여 비용 절감에 유리합니다."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- 스타일: 부드럽고 다채로운 색, 타이틀 강조, 계층 구조 -->
+    <style>
+      :root {
+        --primary-color: #003366; /* BMW 블루 계열 */
+        --secondary-color: #0077B6; /* 부드러운 파란색 */
+        --accent-color: #FFB347; /* 강조색 (골드/오렌지) */
+        --highlight-color: #F8F9FA; /* 아주 밝은 회색 배경 */
+        --text-color: #2D3E50; /* 어두운 회색 텍스트 */
+        --bg-light: #F0F4F8; /* 연한 배경색 */
+        --bg-white: #ffffff; /* 흰색 배경 */
+        --btn-color: #3399CC; /* 버튼색 (미디엄 블루) */
+        --btn-hover: #0077A0; /* 버튼 호버색 */
+        --section-bg-dark: #f0f8ff; /* 섹션 배경 (밝은 하늘색) */
+      }
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+
+      body {
+        font-family: 'Noto Sans KR', sans-serif;
+        margin:0; padding:0;
+        background-color: var(--bg-light);
+        color: var(--text-color);
+        line-height:1.7; /* 줄간격 조정 */
+      }
+      .container {
+        max-width: 1000px;
+        margin:0 auto;
+        padding:0 20px;
+      }
+      header {
+        background-color: var(--primary-color);
+        padding: 30px 20px;
+        text-align: center;
+        color: var(--bg-white);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      }
+      header h1 {
+        margin: 0;
+        font-size: 2.8em;
+        font-weight:900; /* 폰트 두께 강조 */
+      }
+      header h1 a {
+        color: var(--bg-white);
+        text-decoration: none;
+      }
+      .hero {
+        background: url('https://images.pexels.com/photos/1035174/pexels-photo-1035174.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') center center / cover no-repeat; /* 이미지 변경 */
+        color: var(--bg-white);
+        text-align: center;
+        padding: 90px 20px;
+        position: relative;
+        overflow: hidden; /* 배경 이미지가 넘치지 않도록 */
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4); /* 오버레이 추가 */
+        z-index: 1;
+      }
+      .hero > * {
+        position: relative;
+        z-index: 2;
+      }
+      .hero h1 {
+        font-size: 3.5em;
+        margin-bottom: 20px;
+        font-weight:900;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+      }
+      .hero p {
+        font-size: 1.4em;
+        margin-bottom: 35px;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+      }
+      .cta-btn {
+        background-color: var(--accent-color);
+        color: var(--primary-color);
+        padding: 18px 45px;
+        font-size:1.3em;
+        font-weight: bold;
+        border:none;
+        border-radius:50px;
+        cursor:pointer;
+        transition: background-color 0.3s, transform 0.2s;
+        text-decoration: none;
+        display: inline-block;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        margin-top: 20px;
+      }
+      .cta-btn:hover {
+        background-color: #e6a241; /* 강조색 호버 */
+        transform: translateY(-3px);
+      }
+      .compare-form-box {
+        background-color: var(--bg-white);
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        margin-top: 30px;
+        text-align: left;
+        border: 1px solid #ddd;
+      }
+      .compare-form-box h2 {
+        color: var(--primary-color);
+        text-align: center;
+        margin-bottom: 25px;
+        font-size:2.2em;
+        font-weight:700;
+      }
+      .compare-form-box label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: var(--text-color);
+      }
+      .compare-form-box input[type="text"],
+      .compare-form-box input[type="tel"],
+      .compare-form-box select {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-size: 1em;
+      }
+      .form-group {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .form-group > div {
+        flex: 1;
+      }
+
+      .content-section {
+        margin-top: 40px;
+        padding: 60px 0;
+        background-color: var(--bg-white);
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      }
+      .content-section h2 {
+        font-size: 2.8em;
+        color: var(--primary-color);
+        margin-bottom: 30px;
+        font-weight: 700;
+        text-align: center;
+        border-bottom: 3px solid var(--accent-color);
+        padding-bottom: 15px;
+      }
+      .content-section h3 {
+        font-size: 1.8em;
+        color: var(--secondary-color);
+        margin-top: 30px;
+        margin-bottom: 15px;
+        border-left: 5px solid var(--accent-color);
+        padding-left: 15px;
+        font-weight: 700;
+      }
+      .content-section h4 {
+        font-size: 1.4em;
+        color: var(--text-color);
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-weight: 500;
+      }
+      .feature-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 30px;
+      }
+      .feature-grid .item {
+        width: calc(33.33% - 20px);
+        margin: 10px;
+        padding: 30px;
+        background-color: var(--highlight-color);
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        transition: transform 0.3s, background-color 0.3s;
+      }
+      .feature-grid .item:hover {
+        transform: translateY(-5px);
+        background-color: #f0f8ff;
+      }
+      .feature-grid .item img {
+        width: 80px; height: 80px;
+        margin-bottom: 15px;
+      }
+      .keyword-list {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 30px;
+      }
+      .keyword-list li {
+        background-color: var(--secondary-color);
+        color: var(--bg-white);
+        padding: 10px 20px;
+        margin: 5px;
+        border-radius: 20px;
+        font-weight: 500;
+        transition: background-color 0.3s;
+      }
+      .keyword-list li:hover {
+        background-color: var(--primary-color);
+      }
+      .faq-item {
+        border-bottom: 1px solid #ddd;
+        padding: 20px 0;
+        transition: background-color 0.3s;
+      }
+      .faq-item:last-child {
+        border-bottom: none;
+      }
+      .faq-item h3 {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.4em;
+        color: var(--primary-color);
+        margin-top: 0;
+        margin-bottom: 0;
+        font-weight: 500;
+      }
+      .faq-item h3::after {
+        content: '+';
+        font-size: 1.5em;
+        color: var(--accent-color);
+        transition: transform 0.3s;
+      }
+      .faq-item.active h3::after {
+        content: '-';
+        transform: rotate(180deg);
+      }
+      .faq-item p {
+        display: none;
+        padding-top: 10px;
+        color: #555;
+        font-size: 1.1em;
+        margin-left: 15px; /* 들여쓰기 */
+      }
+      .faq-item.active p {
+        display: block;
+      }
+      footer {
+        background-color: var(--primary-color);
+        color: var(--bg-white);
+        text-align: center;
+        padding: 40px 20px;
+        font-size: 0.9em;
+        margin-top: 40px;
+      }
+      footer a {
+        color: var(--bg-white);
+        text-decoration: none;
+        margin: 0 10px;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
+      .info-list {
+        list-style-type: disc;
+        margin-left: 20px;
+      }
+      .info-list li {
+        margin-bottom: 10px;
+        color: #444;
+      }
+      .table-container {
+        margin: 30px 0;
+        overflow-x: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+        font-size: 0.9em;
+      }
+      th, td {
+        border: 1px solid #ddd;
+        padding: 12px;
+      }
+      th {
+        background-color: var(--secondary-color);
+        color: var(--bg-white);
+        font-weight: 500;
+      }
+      td {
+        background-color: var(--highlight-color);
+      }
+      .comparison-table td:nth-child(even) {
+        background-color: #f8f8f8;
+      }
+      .graph-container {
+        margin: 30px 0;
+        padding: 20px;
+        background-color: var(--highlight-color);
+        border-radius: 8px;
+        text-align: center;
+      }
+      .graph-container img {
+        max-width: 100%;
+        height: auto;
+      }
+      .external-link-list {
+        list-style: none;
+        padding: 0;
+      }
+      .external-link-list li {
+        margin-bottom: 10px;
+        padding-left: 10px;
+        border-left: 3px solid var(--accent-color);
+      }
+      .external-link-list li a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-size: 1.1em;
+      }
+      .external-link-list li a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 { font-size: 2.4em; }
+        .hero p { font-size: 1.2em; }
+        .cta-btn { padding: 15px 30px; font-size: 1.1em; }
+        .compare-form-box { padding: 25px; }
+        .content-section h2 { font-size: 2.2em; }
+        .feature-grid .item { width: 100%; margin: 10px 0; }
+        .keyword-list li { margin: 3px; font-size: 0.9em; }
+        .form-group { flex-direction: column; }
+      }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="/">BMW X7 장기렌트 가격 비교</a></h1>
+        </div>
+    </header>
+
     <main>
-      <h1>Home page</h1>
+        <section class="hero">
+            <div class="container">
+                <h1>BMW X7 장기렌트, 최저가 견적을 지금 바로 비교하세요!</h1>
+                <p>2026년형 BMW X7의 장기렌트 예상 비용을 국내 모든 장기렌트 업체별로 한 번에 비교하고, 합리적인 조건으로 계약하세요. 신차 할부, 리스와의 차이점 분석으로 고객님께 가장 유리한 선택을 도와드립니다.</p>
+                <div class="compare-form-box">
+                    <h2>BMW X7 무료 맞춤 견적 요청</h2>
+                    <p>간단한 정보 입력으로 X7 장기렌트, 리스 견적을 동시에 확인하고 믿을 수 있는 전문 업체를 통해 비용을 절약하세요.</p>
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <div>
+                                <label for="car-model">희망 차량 모델</label>
+                                <select id="car-model" name="car-model" required>
+                                    <option value="X7">BMW X7</option>
+                                    <option value="X5">BMW X5</option>
+                                    <option value="5-Series">BMW 5시리즈</option>
+                                    <option value="other">기타</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="rental-period">희망 렌탈 기간 (개월)</label>
+                                <select id="rental-period" name="rental-period" required>
+                                    <option value="">선택하세요</option>
+                                    <option value="24">24개월</option>
+                                    <option value="36">36개월</option>
+                                    <option value="48">48개월</option>
+                                    <option value="60">60개월</option>
+                                </select>
+                            </div>
+                        </div>
+                        <label for="initial-fee">초기 비용 희망 조건</label>
+                        <select id="initial-fee" name="initial-fee" required>
+                            <option value="0">초기 비용 0원 (무보증)</option>
+                            <option value="deposit">보증금 납부</option>
+                            <option value="prepayment">선납금 납부</option>
+                        </select>
+                        <label for="contact-phone">연락처</label>
+                        <input type="tel" id="contact-phone" name="contact-phone" placeholder="휴대폰 번호를 입력하세요" required>
+                        <button type="submit" class="cta-btn">견적 요청하고 비용 비교하기</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>BMW X7 장기렌트, 신차 구매의 새로운 대안</h2>
+                <p>BMW X7은 럭셔리 대형 SUV 시장의 대표 주자입니다. 뛰어난 주행 성능과 고급스러운 인테리어, 최첨단 편의 사양으로 많은 사랑을 받고 있습니다. 하지만 높은 차량 가격으로 인해 신차 구매에 부담을 느끼는 소비자들이 많습니다. 2026년 들어 X7 장기렌트 시장이 폭발적으로 성장한 것은 이러한 배경 때문입니다. 장기렌트는 초기 비용의 부담을 줄여주고, 세금 절감 효과와 차량 관리 편의성 덕분에 합리적인 대안으로 각광받고 있습니다.</p>
+
+                <div class="table-container">
+                    <h3>BMW X7 장기렌트 vs 신차 할부 vs 리스 비교 분석</h3>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>구분</th>
+                                <th>장기렌트 (X7)</th>
+                                <th>신차 할부 (X7)</th>
+                                <th>자동차 리스 (X7)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>차량 명의</td>
+                                <td>렌트사 명의</td>
+                                <td>개인 명의</td>
+                                <td>리스사 명의</td>
+                            </tr>
+                            <tr>
+                                <td>차량 번호판</td>
+                                <td>'하', '호' (렌터카 번호판)</td>
+                                <td>일반 자가용 번호판</td>
+                                <td>'하', '호' (일반 번호판 선택 가능)</td>
+                            </tr>
+                            <tr>
+                                <td>초기 비용</td>
+                                <td>보증금/선납금 선택 가능 (무보증 가능)</td>
+                                <td>취등록세, 선납금, 선수금 발생</td>
+                                <td>보증금/선납금 선택 가능 (무보증 가능)</td>
+                            </tr>
+                            <tr>
+                                <td>보험 처리</td>
+                                <td>렌트사 보험 (운전 경력 유지 안됨)</td>
+                                <td>개인 보험 (운전 경력 유지)</td>
+                                <td>개인 보험 (운전 경력 유지)</td>
+                            </tr>
+                            <tr>
+                                <td>세금 및 관리</td>
+                                <td>월 렌탈료에 모두 포함</td>
+                                <td>개인 납부</td>
+                                <td>개인 납부 (일부 항목 포함 가능)</td>
+                            </tr>
+                            <tr>
+                                <td>만기 시 선택</td>
+                                <td>인수 또는 반납</td>
+                                <td>차량 소유</td>
+                                <td>인수 또는 반납</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>2026년 BMW X7 장기렌트 시장 트렌드 분석</h3>
+                <p>2026년 BMW X7 장기렌트 시장은 개인사업자와 법인 고객뿐만 아니라 일반 개인 고객의 수요도 급증했습니다. 이는 고금리 시대에 초기 목돈 지출을 피하고 월 고정 지출로 차량을 이용하려는 경향이 강해졌기 때문입니다. 특히, 최근에는 AI 기반의 맞춤형 견적 비교 시스템이 발달하여, 개별 소비자의 상황에 맞는 최적의 X7 모델(X7 xDrive40i, X7 xDrive40d 등)과 렌탈 기간, 주행 거리를 추천해주는 서비스가 보편화되었습니다. 딜러사에 따라 '신규 가입 혜택'과 '재구매 할인' 등의 프로모션을 적극 활용하여 '저렴한곳'을 찾는 소비자들의 니즈를 충족시키고 있습니다.</p>
+            </div>
+        </section>
+
+        <section class="content-section" style="background-color: var(--section-bg-dark);">
+            <div class="container">
+                <h2>왜 BMW X7 장기렌트 패키지를 선택해야 할까요?</h2>
+                <div class="feature-grid">
+                    <div class="item">
+                        <img src="https://images.pexels.com/photos/17006836/pexels-photo-17006836/free-photo-of-bmw-x7-%EC%9E%A5%EB%B9%84%EB%A0%8C%ED%8A%B8.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="BMW X7 아이콘">
+                        <h3>초기 비용 절감</h3>
+                        <p>X7 신차 구매 시 필수인 취등록세와 보험료, 차량 가격 일부를 초기 비용 없이 이용 가능합니다. 무보증 장기렌트 조건도 폭넓게 제공되어 부담이 적습니다.</p>
+                    </div>
+                    <div class="item">
+                        <img src="https://images.pexels.com/photos/1583008/pexels-photo-1583008.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="세금 절약 아이콘">
+                        <h3>세금 및 보험료 절약</h3>
+                        <p>자동차세와 보험료가 월 렌탈료에 포함되어 있으며, 특히 법인 및 개인사업자는 월 렌탈료 전액을 손비 처리하여 세금 절감 효과를 극대화할 수 있습니다.</p>
+                    </div>
+                    <div class="item">
+                        <img src="https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="편의성 아이콘">
+                        <h3>편리한 차량 관리</h3>
+                        <p>정기적인 차량 점검 및 소모품 교체 서비스를 렌트사에서 제공하여 X7 차량 관리에 신경 쓸 필요가 없습니다. 사고 발생 시에도 렌트사에서 처리해줍니다.</p>
+                    </div>
+                </div>
+                <h3>함께 많이 찾는 키워드</h3>
+                <ul class="keyword-list">
+                    <li>#BMWX7장기렌트견적</li>
+                    <li>#X7리스vs장기렌트</li>
+                    <li>#X7가격비교</li>
+                    <li>#장기렌트특가</li>
+                    <li>#법인장기렌트비용</li>
+                    <li>#신차장기렌트할인</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>BMW X7 장기렌트 계약 프로세스 상세 가이드</h2>
+                <p>BMW X7 장기렌트 계약은 복잡해 보이지만, 단계별로 정확히 이해하면 누구나 쉽게 진행할 수 있습니다. 2026년 기준, 많은 고객들이 비대면 온라인 견적 비교를 통해 '저렴한곳'을 찾고 있으며, 견적 요청부터 차량 출고까지의 과정을 상세히 안내해 드립니다.</p>
+
+                <h3>1. 견적 비교 및 상담 (가장 중요한 단계)</h3>
+                <p><strong>견적 요청:</strong> 고객은 원하는 X7 모델, 옵션, 렌탈 기간, 연간 주행거리(1만km~4만km)를 결정하여 견적을 요청합니다. 연간 주행거리는 월 렌탈료에 직접적인 영향을 미치므로 운행 습관에 맞춰 신중하게 선택해야 합니다. "X7 장기렌트 견적"을 검색하여 여러 업체(롯데렌터카, SK렌터카, 캐피탈사, 에이전시 등)의 견적을 비교하는 것이 필수입니다. 딜러사마다 '재고' 상황에 따라 할인율과 출고 기간이 달라집니다.</p>
+                <p><strong>전문가 상담:</strong> 견적 비교 후 가장 합리적인 '예상 금액'을 제시한 업체와 상담을 진행합니다. 상담 시 '보증금'과 '선납금' 중 어떤 방식이 유리한지, '만기 시 인수 비용'은 얼마인지 등을 꼼꼼히 확인해야 합니다. '내돈내산 후기' 등을 통해 해당 업체가 신뢰할 수 있는 '전문 업체'인지 검증하는 것도 중요합니다.</p>
+
+                <h3>2. 심사 및 계약 체결</h3>
+                <p><strong>신용 심사:</strong> 장기렌트 계약은 금융 상품과 유사하여 개인 신용 등급 심사가 필요합니다. 심사 결과에 따라 보증금 없이 '무보증'으로 계약할 수 있는지 여부가 결정됩니다. 신용 등급이 낮은 경우 '보증금'을 납부하거나 '선납금'을 내야 할 수 있습니다.</p>
+                <p><strong>계약서 검토:</strong> 최종 견적을 토대로 계약서를 작성합니다. 계약서에는 월 렌탈료, 렌탈 기간, 연간 주행거리, 정비 서비스 범위, 만기 시 인수/반납 조건, 중도 해지 위약금 규정 등이 명확히 기재되어 있어야 합니다. 중도 해지 시 '위약금' 규정이 까다로우므로 꼼꼼한 확인이 필요합니다.</p>
+
+                <h3>3. 차량 출고 및 인도</h3>
+                <p><strong>차량 발주:</strong> 계약 체결 후 렌트사가 BMW 코리아에 X7 차량을 발주합니다. 인기 모델의 경우 출고까지 시간이 걸릴 수 있습니다. 최근에는 '즉시 출고 재고'를 보유한 '전문 업체'가 많으므로, 급하게 차량이 필요한 경우 해당 옵션을 문의하는 것이 좋습니다.</p>
+                <p><strong>차량 인도 및 검수:</strong> 차량이 준비되면 고객에게 인도됩니다. 인도 시 차량 상태를 꼼꼼히 검수해야 합니다. 신차 상태 확인, 옵션 적용 여부, 스크래치 유무 등을 확인하고, 문제가 있을 경우 즉시 '업체'에 알려 조치를 받아야 합니다.</p>
+
+                <h3>4. X7 장기렌트 비용 절약 팁: 현명한 견적 비교 방법</h3>
+                <div class="graph-container">
+                    <h4>BMW X7 장기렌트 비용 변동 요인 분석 (2026년 기준)</h4>
+                    <img src="https://images.pexels.com/photos/12316270/pexels-photo-12316270.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="BMW X7 차량 내부 이미지">
+                    <p><strong>그래프 해석:</strong> X7 장기렌트 비용은 차량 트림, 옵션(15%), 렌탈 기간(20%), 보증금/선납금 비율(25%), 그리고 연간 주행거리 약정(10%)에 따라 변동됩니다. 특히 렌탈 기간이 길수록 월 렌탈료는 낮아지며, 보증금 비율을 높일수록 금융 이자 부담이 줄어들어 총 '비용'을 절약할 수 있습니다.</p>
+                </div>
+                <h4>비용 절약을 위한 실질적인 조언</h4>
+                <div class="info-list">
+                    <li><strong>보증금 vs 선납금:</strong> 보증금은 만기 시 돌려받는 금액이며, 선납금은 미리 내는 렌탈료입니다. 자금 유동성을 고려하여 선택합니다.</li>
+                    <li><strong>주행거리 약정:</strong> 연간 주행거리를 초과하면 '추가 요금'이 발생합니다. 본인의 운행 습관에 맞는 주행거리를 설정해야 합니다.</li>
+                    <li><strong>보험료 포함 여부:</strong> 장기렌트 '가격'에 보험료가 포함되므로, 평소 보험료가 높았던 고객은 장기렌트의 '장점'이 더욱 부각됩니다.</li>
+                    <li><strong>프로모션 활용:</strong> 렌트 업체마다 매월, 분기별 '할인' 프로모션을 진행합니다. '신규 가입' 혜택이나 '재고 할인'을 적극 활용하면 '저렴한곳'을 찾을 수 있습니다.</li>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>자주 묻는 질문 (FAQ)</h2>
+                <div class="faq-item">
+                    <h3>Q. BMW X7 장기렌트, '하' 번호판은 피할 수 없나요?</h3>
+                    <p>A. 네, 현행법상 장기렌트 차량은 '하' 또는 '호' 번호판을 사용해야 합니다. 렌트사는 리스사와 달리 일반 번호판을 사용할 수 없습니다. '하' 번호판에 대한 거부감이 있다면 리스 상품을 고려해볼 수 있습니다. 다만, 렌터카 번호판 사용에 따른 보험료 절감 혜택 등 장점도 있으므로 개인의 선호도에 따라 선택하는 것이 좋습니다.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Q. X7 장기렌트 시 발생하는 정비 서비스 범위는 어디까지인가요?</h3>
+                    <p>A. 정비 서비스는 크게 '포함'과 '불포함' 옵션으로 나뉩니다. '포함' 옵션을 선택하면 엔진오일, 타이어 교체, 워셔액 보충 등 소모품 교체 및 정기 점검이 렌탈료에 포함됩니다. '불포함' 옵션은 월 렌탈료가 낮아지는 대신, 고객이 직접 차량 관리를 해야 합니다. X7은 고가 차량이므로 정비 '전문' 업체에 맡기는 것이 유리할 수 있습니다.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Q. 장기렌트 이용 시 보험 경력 단절이 정말 발생하나요?</h3>
+                    <p>A. 네, 장기렌트 계약 시 렌트사 명의로 보험이 가입되므로 개인의 운전 경력은 단절됩니다. 계약 기간 동안 무사고 운전을 하더라도 개인 보험료 할인이 적용되지 않습니다. 만약 추후 개인 차량을 구매하여 보험 가입 시 경력 단절로 인해 보험료가 높게 책정될 수 있습니다. 이 점은 장기렌트의 명확한 '단점' 중 하나입니다.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Q. BMW X7 장기렌트 견적은 '월 얼마'부터 시작하나요?</h3>
+                    <p>A. X7 장기렌트의 '평균' 월 렌탈료는 모델, 옵션, 계약 조건에 따라 매우 유동적입니다. 일반적으로 2026년형 X7 (xDrive40i 기준) 무보증 48개월 계약 시 '예상 금액'은 100만 원 후반대에서 200만 원 초반대입니다. '저렴한곳'을 찾기 위해서는 반드시 여러 업체의 '가격'을 비교하고 '할인' 프로모션을 확인해야 합니다. '신규 가입' 혜택도 놓치지 마세요.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Q. 장기렌트 업체 순위를 구글이나 네이버에서 확인하고 싶은데, 신뢰할 수 있나요?</h3>
+                    <p>A. 네이버나 구글에서 제공하는 '순위' 정보는 참고용으로만 활용해야 합니다. '순위'는 광고비 지출이나 마케팅 활동에 따라 달라질 수 있으므로, 해당 정보보다는 '내돈내산' 후기, 한국소비자원의 분쟁 사례, 그리고 업체별 계약 조건을 꼼꼼히 '비교'하여 자신에게 맞는 '전문 업체'를 선택하는 것이 중요합니다. 특히 트위터, 인스타그램, 유튜브 등의 소셜 미디어 후기들을 종합적으로 참고할 때 좋습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2>신뢰할 수 있는 외부 자료 및 참고 링크</h2>
+                <p>BMW X7 장기렌트 계약을 진행하기 전, 관련 법령 및 소비자 보호 규정을 확인하여 불이익을 방지하세요. 금융 소비자 보호를 위한 공공 기관 및 정부 사이트를 참고 자료로 제공합니다.</p>
+                <ul class="external-link-list">
+                    <li><a href="https://www.fss.or.kr/" target="_blank" rel="noopener">금융감독원 (FSS): 금융 소비자 보호 및 분쟁 조정</a></li>
+                    <li><a href="https://www.kca.go.kr/index.do" target="_blank" rel="noopener">한국소비자원: 자동차 렌탈 및 리스 서비스 소비자 피해주의보</a></li>
+                    <li><a href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9%EC%A0%95%EB%B3%B4/%EC%97%AC%EC%8B%A0%EC%A6%9D%EC%97%85%EA%B2%B0%EC%A0%9C%EB%B2%95" target="_blank" rel="noopener">법제처: 여신전문금융업법 (자동차 금융 관련 법령)</a></li>
+                    <li><a href="https://www.law.go.kr/%EB%B2%95%EB%A0%B9%EC%A0%95%EB%B3%B4/%EC%9E%90%EB%8F%99%EC%B0%A8%EA%B4%80%EB%A6%AC%EB%B2%95" target="_blank" rel="noopener">법제처: 자동차관리법 (렌터카 등록 및 관리 관련 규정)</a></li>
+                    <li><a href="https://www.ncs.go.kr/ncs/page.do?sk=P1A1B_PG02_002&ncsCtgId=16000181" target="_blank" rel="noopener">NCS 국가직무능력표준: 자동차 정비 및 관리 기준</a></li>
+                </ul>
+                <p>위 자료들은 X7 장기렌트 계약 시 발생할 수 있는 소비자 피해를 예방하고, 합리적인 계약을 위한 기준 정보를 제공합니다. 계약 전 반드시 확인하시기 바랍니다.</p>
+            </div>
+        </section>
     </main>
-  </body>
-</html>
+
+    <script>
+        // FAQ 토글 기능
+        document.querySelectorAll('.faq-item h3').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+    </script>
+  
